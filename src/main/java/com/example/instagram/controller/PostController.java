@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 public class PostController {
     private final PostService postService;
 
@@ -24,7 +24,7 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Post> getAllPosts() {
         return postService.getAllPosts();
     }
