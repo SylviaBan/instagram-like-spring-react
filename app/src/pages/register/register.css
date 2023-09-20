@@ -1,4 +1,4 @@
-.login {
+.register {
     height: 100vh;
     background-color: darkgreen;
     display: flex;
@@ -6,9 +6,10 @@
     align-items: center;
 }
 
-.loginCard {
+.registerCard {
     width: 60%;
     display: flex;
+    flex-direction: row-reverse;
     background-color: yellowgreen;
     min-height: 500px;
     border-radius: 10px;
@@ -19,7 +20,7 @@
 .left {
     display: flex;
     flex: 1;
-    background: url("https://images.pexels.com/photos/1743165/pexels-photo-1743165.jpeg?auto=compress&cs=tinysrgb&w=600") center;
+    background: url("https://images.pexels.com/photos/18261754/pexels-photo-18261754/free-photo-of-glacier-paysage-montagnes-monument.jpeg?auto=compress&cs=tinysrgb&w=600") center;
     background-size: cover;
     padding: 50px;
     flex-direction: column;
@@ -27,7 +28,7 @@
     color: white;
 }
 .left>h1 {
-    font-size: 40px;
+    font-size: 50px;
     line-height: 40px;
 }
 
