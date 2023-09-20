@@ -37,7 +37,7 @@ const RightBar = () => {
                 <div className="user">
                     <div className="userInfo">
                         <img
-                            src="https://images.pexels.com/photos/2380794/pexels-photo-2380794.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            src="https://images.pexels.com/photos/10057618/pexels-photo-10057618.jpeg?auto=compress&cs=tinysrgb&w=600"
                             alt=""
                         />
                         <span>Michaël1975</span>

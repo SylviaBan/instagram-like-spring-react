@@ -35,8 +35,11 @@ public class InstagramApplication {
 
                 // Création users
                 User u1 = new User("Caroline88", "user1@mail.fr", "Paris");
+                u1.setProfilePic("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600");
                 User u2 = new User("François Durand", "user2@mail.fr", "Monaco");
+                u2.setProfilePic("https://images.pexels.com/photos/5220075/pexels-photo-5220075.jpeg?auto=compress&cs=tinysrgb&w=600");
                 User u3 = new User("Coco", "user3@mail.fr", "Madrid");
+                u3.setProfilePic("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600");
 
                 User u4 = new User();
                 u4.setUsername("Laetitia");

@@ -23,7 +23,7 @@ function UserProfile() {
                 <div>
                     <h3>Post</h3>
                     <p>Description : {post.description || 'Non définie'}</p>
-                    <img src={post.img} alt="Post" />
+                    <img src={post.img} alt="Post"/>
                 </div>
             )}
         </div>
