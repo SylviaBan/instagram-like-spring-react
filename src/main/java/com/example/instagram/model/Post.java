@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="post")
 @SequenceGenerator(name="post_gen",sequenceName="post_gen", initialValue = 1, allocationSize = 1)
 public class Post {
     @Id

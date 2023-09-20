@@ -1,6 +1,6 @@
 .leftBarClass {
     flex: 2;
-    background: url("https://images.pexels.com/photos/17949765/pexels-photo-17949765/free-photo-of-centre-ville-de-seoul.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load");
+    background: url("https://images.pexels.com/photos/5326904/pexels-photo-5326904.jpeg?auto=compress&cs=tinysrgb&w=600");
     position: sticky;
     top: 70px;
     height: calc(100vh - 70px);

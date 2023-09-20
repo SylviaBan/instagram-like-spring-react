@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-function UserList() {
+function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    // Effectuez une requête fetch pour récupérer la liste des utilisateurs depuis votre API Spring Boot
+
     fetch('/api/users/')
       .then((response) => response.json())
       .then((data) => setUsers(data));
@@ -22,4 +22,4 @@ function UserList() {
   );
 }
 
-export default UserList;
+export default Users;

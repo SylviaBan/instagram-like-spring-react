@@ -2,6 +2,8 @@ package com.example.instagram.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="user")
 @SequenceGenerator(name="user_gen",sequenceName="user_gen", initialValue = 1, allocationSize = 1)
@@ -125,10 +127,7 @@ public class User {
     }
 
     public Post getPost() {
-        return post;
+        return (Post) post;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
-    }
 }

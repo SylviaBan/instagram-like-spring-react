@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import "./posts.css";
 
-function PostList() {
+function Posts() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -11,8 +12,8 @@ function PostList() {
     }, []);
 
     return (
-        <div>
-            <h2>Liste des publications :</h2>
+        <div className="posts">
+            <h1>Mes posts</h1>
             <ul>
                 {posts.map((post) => (
                     <li key={post.id}>{post.description}</li>
@@ -22,4 +23,5 @@ function PostList() {
     );
 }
 
-export default PostList;
+
+export default Posts;
