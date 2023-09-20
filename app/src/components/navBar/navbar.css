@@ -4,21 +4,23 @@
     justify-content: space-between;
     padding: 10px 20px;
     height: 50px;
+    position: sticky;
+    top: 0;
     border-bottom: 2px solid lightslategrey;
-    background-color: darkseagreen;
+    background-color: navy;
+    color: antiquewhite;
 }
 
-.leftBar{
+.navbarLeft{
     display: flex;
     align-items: center;
     gap:30px;
 }
 
-.leftBarSpan {
+.navbarLeftSpan {
     font-weight: bold;
-    font-size: 30px;
-    color: darkgreen;
-
+    font-size: 40px;
+    color: antiquewhite;
 }
 .search {
     display: flex;
@@ -35,7 +37,7 @@
     width: 500px;
 }
 
-.rightBar{
+.navbarRight{
     display: flex;
     align-items: center;
     gap:20px;
