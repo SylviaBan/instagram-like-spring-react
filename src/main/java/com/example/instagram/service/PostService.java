@@ -1,7 +1,6 @@
 package com.example.instagram.service;
 
 import com.example.instagram.model.Post;
-import com.example.instagram.model.User;
 import com.example.instagram.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,56 +10,36 @@ import java.util.Optional;
 
 @Service
 public class PostService {
+    @Autowired
+    private final PostRepository postRepository;
 
     @Autowired
-    private PostRepository postRepo;
-
-    // CREATE
-    public Post addPost(Post post) {
-        return postRepo.save(new Post());
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
     }
 
-    // FIND
-    public List<Post> findAllPost() {;
-        return postRepo.findAll();
+    public List<Post> getAllPosts() {
+        return postRepository.findAll();
     }
-    public Optional<Post> findPostById(Long id) {
-        return postRepo.findById(id);
+
+    public Optional<Post> getPostById(Long id) {
+        return postRepository.findById(id);
     }
-    // UPDATE
+
+    public Post createPost(Post post) {
+        return postRepository.save(post);
+    }
+
     public Post updatePost(Long id, Post post) {
-        if (existsById(id)) {
-
-            Post existingPost = postRepo.findById(id).orElse(null);
-
-            if (existingPost != null) {
-                existingPost.setDescription(post.getDescription());
-                Post updatedPost = postRepo.save(existingPost);
-            }
+        if (!postRepository.existsById(id)) {
+            return null;
         }
-        return null;
-    }
-    public boolean existsById(Long id) {
-        postRepo.existsById(id);
-        return false;
+        post.setId(id);
+        return postRepository.save(post);
     }
 
-    // DELETE
-    public void delete(Long id) {
-        postRepo.deleteById(id);
+    public void deletePost(Long id) {
+        postRepository.deleteById(id);
     }
-    public void deleteAllPost() {
-        postRepo.deleteAll();
-    }
-
-    public Post get(Long id) throws PostNotFoundException {
-        Optional<Post> result = postRepo.findById(id);
-        if (result.isPresent()) {
-            return result.get();
-        }
-        throw new PostNotFoundException("Post with the ID not found" +id);
-    }
-
 }
-
 

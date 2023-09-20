@@ -27,41 +27,28 @@ public class UserService {
         return userRepo.findById(id);
     }
 
-    // UPDATE
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
+    }
+
+    public Optional<User> getUserById(Long id) {
+        return userRepo.findById(id);
+    }
+
+    public User createUser(User user) {
+        return userRepo.save(user);
+    }
+
     public User updateUser(Long id, User user) {
-        if (existsById(id)) {
-
-            User existingUser = userRepo.findById(id).orElse(null);
-
-            if (existingUser != null) {
-                existingUser.setName(user.getName());
-                User updatedUser = userRepo.save(existingUser);
-            }
+        // Vérifiez d'abord si l'utilisateur existe
+        if (!userRepo.existsById(id)) {
+            return null; // L'utilisateur n'existe pas
         }
-        return null;
-    }
-    public boolean existsById(Long id) {
-        userRepo.existsById(id);
-        return false;
+        user.setId(id); // Assurez-vous que l'ID de l'utilisateur est correctement défini
+        return userRepo.save(user);
     }
 
-    // DELETE
-    public void delete(Long id) {
+    public void deleteUser(Long id) {
         userRepo.deleteById(id);
-    }
-    public void deleteAllUser() {
-        userRepo.deleteAll();
-    }
-
-    public void save(User user) {
-        userRepo.save(user);
-    }
-
-    public User get(Long id) throws UserNotFoundException {
-        Optional<User> result = userRepo.findById(id);
-        if (result.isPresent()) {
-            return result.get();
-        }
-        throw new UserNotFoundException("User with the ID not found" +id);
     }
 }

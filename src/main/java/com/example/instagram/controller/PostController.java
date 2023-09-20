@@ -11,61 +11,41 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
-@Controller
-@RequestMapping("/home")
+@RestController
+@RequestMapping("/posts")
 public class PostController {
-    
-    @Autowired
-    private PostService postService;
+    private final PostService postService;
 
+    @Autowired
     public PostController(PostService postService) {
         this.postService = postService;
     }
 
-    // RETRIEVE ------------------------------
-    @GetMapping("/posts")
-    public String listPosts(Model model) {
-        List<Post> postsList = postService.findAllPost();
-        model.addAttribute("postsList", postsList);
-        return "posts";
+    @GetMapping("/all")
+    public List<Post> getAllPosts() {
+        return postService.getAllPosts();
     }
 
-    // CREATE ------------------------------v
-    private List<Post> posts = new ArrayList<>();
-    @GetMapping("/posts/add")
-    public String showAddForm(Model model) {
-        model.addAttribute("post", new Post());
-        return "add-form";
-    }
-    @PostMapping("/posts/save")
-    public String savePost(Post post, RedirectAttributes ra) {
-        postService.addPost(post);
-        ra.addFlashAttribute("message", "Le post a bien été ajouté.");
-        return "redirect:/posts";
+    @GetMapping("/{id}")
+    public Optional<Post> getPostById(@PathVariable Long id) {
+        return postService.getPostById(id);
     }
 
-
-    // EDIT ------------------------------
-    @GetMapping("/posts/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
-        try {
-            Post post = postService.get(id);
-            model.addAttribute("post", post);
-            model.addAttribute("pageTitle", "Mise à jour du post :");
-            return "add-form";
-        } catch (PostNotFoundException e) {
-            ra.addFlashAttribute("message", "Le post a bien été modifié.");
-            return "redirect:/posts";
-
-        }
+    @PostMapping("/")
+    public Post createPost(@RequestBody Post post) {
+        return postService.createPost(post);
     }
 
-    // DELETE ------------------------------
-    @GetMapping("/posts/delete/{id}")
-    public String delete(@PathVariable("id") Long id, RedirectAttributes ra) {
-        postService.delete(id);
-        return "redirect:/posts";
+    @PutMapping("/{id}")
+    public Post updatePost(@PathVariable Long id, @RequestBody Post post) {
+        return postService.updatePost(id, post);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePost(@PathVariable Long id) {
+        postService.deletePost(id);
     }
 }

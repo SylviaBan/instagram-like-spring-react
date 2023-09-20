@@ -1,69 +1,47 @@
 package com.example.instagram.controller;
-
 import com.example.instagram.model.User;
-import com.example.instagram.service.UserNotFoundException;
 import com.example.instagram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
-@Controller
-@RequestMapping("/")
+@RestController
+@RequestMapping("/api")
 public class UserController {
+
     @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    // RETRIEVE ------------------------------
     @GetMapping("/users")
-    public String listUsers(Model model) {
-        List<User> usersList = userService.listAll();
-        model.addAttribute("usersList", usersList);
-        return "users";
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 
-    // CREATE ------------------------------
-    private List<User> users = new ArrayList<>();
-    @GetMapping("/users/add")
-    public String showAddForm(Model model) {
-        model.addAttribute("user", new User());
-        return "add-form";
-    }
-    @PostMapping("/users/save")
-    public String saveUser(User user, RedirectAttributes ra) {
-        userService.save(user);
-        ra.addFlashAttribute("message", "L'user a bien été ajouté.");
-        return "redirect:/users";
+    @GetMapping("/users/{id}")
+    public Optional<User> getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
     }
 
-
-    // EDIT ------------------------------
-    @GetMapping("/users/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) {
-        try {
-            User user = userService.get(id);
-            model.addAttribute("user", user);
-            model.addAttribute("pageTitle", "Mise à jour du user :");
-            return "add-form";
-        } catch (UserNotFoundException e) {
-            ra.addFlashAttribute("message", "L'user a bien été modifié.");
-            return "redirect:/users";
-
-        }
+    @PostMapping("/new")
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
 
-    // DELETE ------------------------------
-    @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable("id") Long id, RedirectAttributes ra) {
-        userService.delete(id);
-        return "redirect:/users";
+    @PutMapping("/update/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.updateUser(id, user);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
     }
 }
