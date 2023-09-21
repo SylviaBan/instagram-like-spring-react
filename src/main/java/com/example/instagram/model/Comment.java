@@ -15,14 +15,14 @@ public class Comment {
     @Column(nullable = false)
     private String text;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
+    @JsonBackReference
     private Post post;
 
     public Comment(Long id, String text, User user, Post post) {

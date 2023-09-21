@@ -19,8 +19,8 @@ public class User {
     private String location;
 
     // Relation One-to-One vers Post
-    @JsonManagedReference
     @OneToOne(mappedBy = "user")
+    @JsonManagedReference
     private Post post;
 
     public User(Long id, String username, String email, String password, String name, String coverPic, String profilePic, String location, Post post) {
