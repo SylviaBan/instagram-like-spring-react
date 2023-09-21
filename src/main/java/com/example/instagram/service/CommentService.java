@@ -21,11 +21,15 @@ public class CommentService {
         return commentRepository.findAll();
     }
 
-    public Comment createComment(Long id, Comment comment) {
+    public Comment createComment(Comment comment) {
         return commentRepository.save(comment);
     }
 
     public Optional<Comment> getCommentsById(Long id) {
         return commentRepository.findById(id);
+    }
+
+    public Comment save(Long postId, Comment comment) {
+        return comment;
     }
 }

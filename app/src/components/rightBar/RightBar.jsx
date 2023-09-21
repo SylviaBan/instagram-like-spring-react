@@ -19,9 +19,9 @@ const RightBar = () => {
                             />
                             <span>AnneClaire</span>
                         </div>
-                        <div className="buttons">
-                            <button>Accepter</button>
-                            <button>Annuler</button>
+                        <div className="buttonsRight">
+                            <button className="button-accept">Accepter</button>
+                            <button className="button-dismiss">Annuler</button>
                         </div>
                     </div>
                     <div className="userRightBar">
@@ -32,9 +32,9 @@ const RightBar = () => {
                             />
                             <span>Pierre Legendre</span>
                         </div>
-                        <div className="buttons">
-                            <button>Accepter</button>
-                            <button>Annuler</button>
+                        <div className="buttonsRight">
+                            <button className="button-accept">Accepter</button>
+                            <button className="button-dismiss">Annuler</button>
                         </div>
                     </div>
                 </div>
@@ -46,9 +46,9 @@ const RightBar = () => {
                         />
                         <span>Michaël1975</span>
                     </div>
-                    <div className="buttons">
-                        <button>Accepter</button>
-                        <button>Annuler</button>
+                    <div className="buttonsRight">
+                        <button className="button-accept">Accepter</button>
+                        <button className="button-dismiss">Annuler</button>
                     </div>
                 </div>
                 <div className="userRightBar">
@@ -59,9 +59,9 @@ const RightBar = () => {
                         />
                         <span>Anne-Charlotte B.</span>
                     </div>
-                    <div className="buttons">
-                        <button>Accepter</button>
-                        <button>Annuler</button>
+                    <div className="buttonsRight">
+                        <button className="button-accept">Accepter</button>
+                        <button className="button-dismiss">Annuler</button>
                     </div>
                 </div>
             </div>

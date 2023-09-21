@@ -15,7 +15,7 @@ function AllPosts(  ) {
         setLiked(!liked);
     };
 
-    const [comments, setComments] = useState({});
+    const [commentsWrite, setCommentsWrite] = useState(true);
 
 
     useEffect(() => {
@@ -53,16 +53,17 @@ function AllPosts(  ) {
                                     {liked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}
                                     {liked ? '11 likes' : '12 likes'}
                                 </div>
-                                <div className="infoItem">
+                                <div className="infoItem" onClick={()=> setCommentsWrite((!commentsWrite))}>
                                     <TextsmsOutlinedIcon />
-                                    10 commentaires
+                                    Commentaires
                                 </div>
                                 <div className="infoItem">
                                     <ShareOutlinedIcon />
                                     Share
                                 </div>
                             </div>
-                            {/*<Comments />*/}
+                            {/*si comments true => écrire un commentaire*/}
+                            {commentsWrite && <Comments />}
                         </div>
                     </div>
                 ))}

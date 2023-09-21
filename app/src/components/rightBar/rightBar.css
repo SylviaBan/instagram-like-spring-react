@@ -15,9 +15,11 @@
 }
 
 .newPost>button {
-    background-color: darkgreen;
+    background-color: olivedrab;
     padding: 20px;
-    font-size: large;
+    font-size: medium;
+    border-radius: 10px;
+    color: white;
 }
 .container {
     padding: 20px;
@@ -37,7 +39,7 @@
     align-items: center;
     gap : 20px;
 }
-.buttons {
+.buttonsRight {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -47,13 +49,21 @@
     height: 70px;
     border-radius: 10%;
 }
-
-button {
+.button-accept {
     border: none;
     padding: 10px;
     border-radius: 10px;
     margin-right: 5px ;
     background-color: navy;
+    color: white;
+    cursor: pointer;
+}
+.button-dismiss {
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 5px ;
+    background-color: darkred;
     color: white;
     cursor: pointer;
 }

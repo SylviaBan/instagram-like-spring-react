@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 function UserProfile() {
     const [user, setUser] = useState({});
     const [post, setPost] = useState({});
+    const [comment, setComment] = useState({});
 
     useEffect(() => {
         fetch('/api/users/3')

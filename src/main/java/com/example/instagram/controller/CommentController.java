@@ -1,6 +1,7 @@
 package com.example.instagram.controller;
 
 import com.example.instagram.model.Comment;
+import com.example.instagram.model.Post;
 import com.example.instagram.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +23,15 @@ public class CommentController {
     public List<Comment> getAllComments() {
         return commentService.getAllComments();
     }
+    @PostMapping("/")
+    public Comment createJustComment(@RequestBody Comment comment) {
+        return commentService.createComment(comment);
+    }
 
     @PostMapping("/posts/{postId}")
     public Comment createComment(@PathVariable Long postId, @RequestBody Comment comment) {
         // Associer le commentaire au post à l'id postId
-        //return commentService.save(comment, postId);
-        return null;
+        return commentService.save(postId, comment);
     }
 
     @GetMapping("/posts/{postId}")
