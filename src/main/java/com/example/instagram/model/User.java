@@ -1,5 +1,6 @@
 package com.example.instagram.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +19,7 @@ public class User {
     private String location;
 
     // Relation One-to-One vers Post
+    @JsonManagedReference
     @OneToOne(mappedBy = "user")
     private Post post;
 

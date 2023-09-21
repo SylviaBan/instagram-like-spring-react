@@ -1,6 +1,7 @@
 package com.example.instagram.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,11 +17,12 @@ public class Post {
     private String img;
 
     // Relation One-to-One vers User id
-    @JsonIgnore
+    @JsonManagedReference
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
 

@@ -1,5 +1,7 @@
 package com.example.instagram.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,10 +15,12 @@ public class Comment {
     @Column(nullable = false)
     private String text;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
