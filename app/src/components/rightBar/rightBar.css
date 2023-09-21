@@ -7,7 +7,18 @@
     height: calc(100vh - 70px);
     overflow: scroll;
 }
+.newPost {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
 
+.newPost>button {
+    background-color: darkgreen;
+    padding: 20px;
+    font-size: large;
+}
 .container {
     padding: 20px;
 }

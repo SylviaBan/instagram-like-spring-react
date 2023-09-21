@@ -8,7 +8,14 @@ import Comments from "../comments/Comments";
 
 function AllPosts(  ) {
     const [jsonFiles, setJsonFiles] = useState([]);
-    const liked = true;
+
+    const [liked, setLiked] = useState(true);
+    const handleLikeClick = () => {
+        // Inversion de l'état de 'liked'
+        setLiked(!liked);
+    };
+
+
 
     useEffect(() => {
         fetch('/api/users/')
@@ -41,9 +48,9 @@ function AllPosts(  ) {
                                 </div>
                             )}
                             <div className="info">
-                                <div className="infoItem">
+                                <div className="infoItem" onClick={handleLikeClick}>
                                     {liked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}
-                                    12 likes
+                                    {liked ? '11 likes' : '12 likes'}
                                 </div>
                                 <div className="infoItem">
                                     <TextsmsOutlinedIcon />

@@ -5,6 +5,9 @@ const RightBar = () => {
     return (
         <div className="rightBarClass">
             <div className="container">
+                <div className="newPost">
+                    <button>Nouveau post</button>
+                </div>
                 <div className="item">
                     <span>Ils vous ont observé :-)</span>
                     <hr/>
