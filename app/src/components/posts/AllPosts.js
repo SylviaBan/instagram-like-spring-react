@@ -15,6 +15,7 @@ function AllPosts(  ) {
         setLiked(!liked);
     };
 
+    const [comments, setComments] = useState({});
 
 
     useEffect(() => {
