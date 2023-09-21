@@ -2,13 +2,10 @@ package com.example.instagram.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name="user")
-@SequenceGenerator(name="user_gen",sequenceName="user_gen", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name="user_gen",sequenceName="user_seq", initialValue = 1, allocationSize = 1)
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

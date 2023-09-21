@@ -2,6 +2,8 @@ package com.example.instagram;
 
 import com.example.instagram.model.Post;
 import com.example.instagram.model.User;
+import com.example.instagram.model.Comment;
+import com.example.instagram.repository.CommentRepository;
 import com.example.instagram.repository.PostRepository;
 import com.example.instagram.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import com.example.instagram.service.UserNotFoundException;
-
 
 import java.util.List;
 
@@ -25,6 +25,8 @@ public class InstagramApplication {
     private UserRepository userRepo;
     @Autowired
     private PostRepository postRepo;
+    @Autowired
+    private CommentRepository commentRepo;
 
     @Bean
     CommandLineRunner myCommandLineRunnerBean() {
@@ -53,15 +55,25 @@ public class InstagramApplication {
                 u5.setLocation("Tokyo");
                 u5.setProfilePic("https://images.pexels.com/photos/1267051/pexels-photo-1267051.jpeg?auto=compress&cs=tinysrgb&w=600");
 
-                // Création posts
+                // Création de posts
                 Post p1 = new Post("Je me régale !", "https://images.pexels.com/photos/1640775/pexels-photo-1640775.jpeg?auto=compress&cs=tinysrgb&w=600", u1);
                 Post p2 = new Post("Je suis ENFIN en vacances :-)", "https://images.pexels.com/photos/879010/pexels-photo-879010.jpeg?auto=compress&cs=tinysrgb&w=600", u2);
                 Post p3 = new Post("Comment ça va ? Une journée stressante pour moi...", "https://images.pexels.com/photos/4226221/pexels-photo-4226221.jpeg?auto=compress&cs=tinysrgb&w=600", u3);
                 Post p4 = new Post("Weekend à la plage", "https://images.pexels.com/photos/1142984/pexels-photo-1142984.jpeg?auto=compress&cs=tinysrgb&w=600", u4);
                 Post p5 = new Post("Chat à donner", "https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=600", u5);
 
+                // Création de commentaires avec référence à des posts existants
+                Comment c1 = new Comment("Miam miam bon appétit !", u1, p1);
+                Comment c2 = new Comment("Profitez-en bien avant la rentrée :-)", u2, p2);
+                Comment c3 = new Comment("Bon courage, on se voit ce weekend !", u3, p3);
+                Comment c4 = new Comment("Trop bien... N'oubliez pas de ramasser les coquillages :-)", u4, p4);
+                Comment c5 = new Comment("Je vais demander autour de moi et reviens vers toi asap", u5, p5);
+
                 userRepo.saveAll(List.of(u1,u2,u3,u4,u5));
                 postRepo.saveAll(List.of(p1,p2,p3,p4,p5));
+                commentRepo.saveAll(List.of(c1,c2,c3,c4,c5));
+
+
 
                 //Test :  une nouvelle instance de User & Post.
                 /*User user = new User();

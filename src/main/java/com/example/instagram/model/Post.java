@@ -3,9 +3,11 @@ package com.example.instagram.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="post")
-@SequenceGenerator(name="post_gen",sequenceName="post_gen", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name="post_gen",sequenceName="post_seq", initialValue = 1, allocationSize = 1)
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +21,15 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
-    public Post(Long id, String description, String img, User user) {
+    public Post(Long id, String description, String img, User user, List<Comment> comments) {
         this.id = id;
         this.description = description;
         this.img = img;
         this.user = user;
+        this.comments = comments;
     }
 
     public Post(String description, String img, User user) {
@@ -82,5 +87,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
