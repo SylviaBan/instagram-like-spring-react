@@ -48,6 +48,7 @@
     border: 1px solid;
     background-color: whitesmoke;
     margin-right: 20px;
+    border-radius: 10px;
 }
 .comment-form {
     width: 100%;

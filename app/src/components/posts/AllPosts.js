@@ -17,6 +17,27 @@ function AllPosts(  ) {
 
     const [commentsWrite, setCommentsWrite] = useState(true);
 
+    // Suppression du post
+    const handleDeleteClick = async (postId) => {
+        // Envoyer une requête de suppression au backend pour supprimer le post
+        try {
+            const response = await fetch(`/api/posts/${postId}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                // Mettre à jour l'état pour refléter la suppression du post
+                setJsonFiles((prevJsonFiles) =>
+                    prevJsonFiles.filter((jsonFile) => jsonFile.id !== postId)
+                );
+            } else {
+                console.error('Erreur lors de la suppression du post');
+            }
+        } catch (error) {
+            console.error('Erreur lors de la suppression du post :', error);
+        }
+    };
+
 
     useEffect(() => {
         fetch('/api/users/')
@@ -32,7 +53,10 @@ function AllPosts(  ) {
                 {jsonFiles.map((jsonFile) => (
                     <div key={jsonFile.id}>
                         <div className="postContainer">
-                            <h3 className="newsUser">News de {jsonFile.username}</h3>
+                            <button className="handle-suppression" onClick={() => handleDeleteClick(jsonFile.id)}>
+                                Supprimer
+                            </button>
+                            <span className="newsUser">News de {jsonFile.username}</span>
                             <div className="user">
                                 <div className="userInfo">
                                     <img className="userInfoImg" src={jsonFile.profilePic} alt="profile picture" />

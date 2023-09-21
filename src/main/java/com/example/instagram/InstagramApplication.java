@@ -41,7 +41,7 @@ public class InstagramApplication {
                 User u2 = new User("François Durand", "user2@mail.fr", "Vilnius");
                 u2.setProfilePic("https://images.pexels.com/photos/5220075/pexels-photo-5220075.jpeg?auto=compress&cs=tinysrgb&w=600");
                 User u3 = new User("Coco", "user3@mail.fr", "Madrid");
-                u3.setProfilePic("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600");
+                u3.setProfilePic("https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=600");
 
                 User u4 = new User();
                 u4.setUsername("Laetitia");
