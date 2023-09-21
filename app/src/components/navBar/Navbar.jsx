@@ -23,7 +23,7 @@ const Navbar = () => {
             <div className="navbarRight">
                 <PersonOutlinedIcon/>
                 <NotificationsOutlinedIcon/>
-                <div className="user">
+                <div className="userProfile">
                     <img src="https://images.pexels.com/photos/6625663/pexels-photo-6625663.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"/>
                     <span>User Name</span>
                 </div>

@@ -14,7 +14,7 @@ const Register = () => {
                         vous êtes au bon endroit !</p>
                     <span>Tu as déjà un compte ?</span>
                     <Link to="/login">
-                    <button className={"leftButton"}>Connexion</button>
+                        <button className={"leftButton"}>Connexion</button>
                     </Link>
                 </div>
                 <div className="right">
@@ -23,7 +23,9 @@ const Register = () => {
                         <input type="text" placeholder="Username" />
                         <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Password" />
-                        <button>Register</button>
+                        <Link to="/">
+                            <button className="registerButton">Register</button>
+                        </Link>
                     </form>
                 </div>
             </div>

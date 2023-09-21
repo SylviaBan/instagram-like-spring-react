@@ -6,8 +6,9 @@ const RightBar = () => {
         <div className="rightBarClass">
             <div className="container">
                 <div className="item">
-                    <span>Ils vous ont contacté</span>
-                    <div className="user">
+                    <span>Ils vous ont observé :-)</span>
+                    <hr/>
+                    <div className="userRightBar">
                         <div className="userInfo">
                             <img
                                 src="https://images.pexels.com/photos/2218786/pexels-photo-2218786.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -20,7 +21,7 @@ const RightBar = () => {
                             <button>Annuler</button>
                         </div>
                     </div>
-                    <div className="user">
+                    <div className="userRightBar">
                         <div className="userInfo">
                             <img
                                 src="https://images.pexels.com/photos/14697557/pexels-photo-14697557.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -34,7 +35,7 @@ const RightBar = () => {
                         </div>
                     </div>
                 </div>
-                <div className="user">
+                <div className="userRightBar">
                     <div className="userInfo">
                         <img
                             src="https://images.pexels.com/photos/10057618/pexels-photo-10057618.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -47,7 +48,7 @@ const RightBar = () => {
                         <button>Annuler</button>
                     </div>
                 </div>
-                <div className="user">
+                <div className="userRightBar">
                     <div className="userInfo">
                         <img
                             src="https://images.pexels.com/photos/1727273/pexels-photo-1727273.jpeg?auto=compress&cs=tinysrgb&w=600"

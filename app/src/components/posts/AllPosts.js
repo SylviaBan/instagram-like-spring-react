@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import "./allPosts.css"
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import Comments from "../comments/Comments";
 
-function AllPosts() {
+function AllPosts(  ) {
     const [jsonFiles, setJsonFiles] = useState([]);
+    const liked = true;
 
     useEffect(() => {
         fetch('/api/users/')
@@ -14,30 +20,45 @@ function AllPosts() {
 
     return (
         <div className="posts">
-            {jsonFiles.map((jsonFile) => (
-                <div key={jsonFile.id}>
-                    <h3>News de {jsonFile.username}</h3>
-            <div className="user">
-                <div className="userInfo">
-                    <img src={jsonFile.profilePic} alt="profile picture"/>
-                    <div className="details">
-                        <p>Email : {jsonFile.email || 'Non défini'}</p>
-                        <p>Localisation : {jsonFile.location || 'Non définie'}</p>
-                    </div>
-                </div>
-            </div>
-            <div className="content"></div>
-            <div className="info"></div>
-
-                    {jsonFile.post && (
-                        <div>
-                            <h4>Post</h4>
-                            <p>Description : {jsonFile.post.description || 'Non définie'}</p>
-                            <img src={jsonFile.post.img} alt="Post" />
+            <div className="container">
+                {jsonFiles.map((jsonFile) => (
+                    <div key={jsonFile.id}>
+                        <div className="postContainer">
+                            <h3 className="newsUser">News de {jsonFile.username}</h3>
+                            <div className="user">
+                                <div className="userInfo">
+                                    <img className="userInfoImg" src={jsonFile.profilePic} alt="profile picture" />
+                                    <div className="details">
+                                        <span className="email">Email : {jsonFile.email || 'Non défini'}</span>
+                                        <span className="date">Localisation : {jsonFile.location || 'Non définie'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {jsonFile.post && (
+                                <div className="content">
+                                    <span>{jsonFile.post.description || 'Non définie'}</span>
+                                    <img className="postImg" src={jsonFile.post.img} alt="Post" />
+                                </div>
+                            )}
+                            <div className="info">
+                                <div className="infoItem">
+                                    {liked ? <FavoriteBorderOutlinedIcon /> : <FavoriteOutlinedIcon />}
+                                    12 likes
+                                </div>
+                                <div className="infoItem">
+                                    <TextsmsOutlinedIcon />
+                                    10 commentaires
+                                </div>
+                                <div className="infoItem">
+                                    <ShareOutlinedIcon />
+                                    Share
+                                </div>
+                            </div>
+                            {/*<Comments />*/}
                         </div>
-                    )}
-                </div>
-            ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

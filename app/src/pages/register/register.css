@@ -67,7 +67,7 @@
     padding: 15px 10px;
 }
 
-.right>form>button {
+.registerButton {
     width: 50%;
     padding: 10px;
     border:none;
